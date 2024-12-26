@@ -1,0 +1,37 @@
+
+
+class Goal:
+    def __init__(self,name="",amount=0.0,GoalList =None):#Constructor
+        self.name = name
+        self.amount = amount
+        if GoalList is None:
+            GoalList = []
+        else:
+            self.GoalList = GoalList
+
+
+    def findGoal(self,GoalList):#Find all of the financial goals for the user
+        goal = int(input('How many financial goals do you have'))
+      
+
+        for i in range (goal):
+            goalName = str(input('What is the name of this goal ?'))
+            goalMoney = float(input(f'How much money do you want to save for this goal({goalName})?'))
+            goal = Goal(goalName,goalMoney)
+            GoalList.append(goal)
+
+    def getSpecificGoalAmound(self,GoalList): #Find the amount of money for a specific goal(To be used with Money Allocation Class)
+        goalSearch = str(input("What amount of the goal are you searching for"))
+
+        try:
+            position  = GoalList.index(goalSearch)
+        except ValueError:
+            print(f"There is no goal with the name of {goalSearch}")
+
+        goalTarget = GoalList[position].amount  
+
+        return goalTarget
+            
+        
+
+
