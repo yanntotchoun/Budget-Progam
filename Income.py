@@ -13,7 +13,7 @@ class Income:
         
 
     def findIncome(self,quantity,IncomeList):#Method for finding all of the Incomes source of a person
-        quantiy = int(input("How many sources of income do you have ?"))
+        quantity = int(input("How many sources of income do you have ?"))
   
 
         for i in range (quantity):#Getting the information of the income, then creating an object an putting it inside of a list
@@ -22,13 +22,13 @@ class Income:
             IncomeObject = Income(name,amount)
             IncomeList.append(IncomeObject)
 
-    def amountIncome(self,IncomeList):
+    def amountIncome(self,IncomeList):#Method to add the amount of the incomes together to the sum of incomes
         sumIncome =0
         for income in IncomeList:
             sumIncome +=  income.amount
         print(f'{Person.name} has an income of {sumIncome} per month')
 
-    def displayIncome(self,IncomeList):
+    def displayIncome(self,IncomeList):# Method to display the incomes
         print(f"These are the source of income for {Person.name}:")
         print()
 
