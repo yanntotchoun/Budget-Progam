@@ -4,7 +4,6 @@ class Person:
         self.age = age
         self.moneySaved = moneySaved
    
-   
       
     def displayPerson(self):
         print(f'The name of the user is {self.name}')

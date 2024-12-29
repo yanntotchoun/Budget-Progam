@@ -1,17 +1,13 @@
 import Person
 class Expense:
-    def __init__(self,name=" ",amount=0,ExpenseList =None):#Constructor for the Income Class
+    def __init__(self,name=" ",amount=0):#Constructor for the Income Class
         self.name = name
         self.amount = amount
-        if ExpenseList is None:
-            self.ExpenseList = []
-        else:
-            self.ExpenseList = ExpenseList
-     
+    
 
-    def findExpense(self):#Method for finding all of the Expenses of a person
-        quantity = int(input("How many sources of income do you have ?"))
-        ExpenseList= []
+    def findExpense(self,quantity,ExpenseList):#Method for finding all of the Expenses of a person
+   
+  
 
         for i in range (quantity):#Getting the information of the Expense, then creating an object an putting it inside of a list
             name = str(input(f'What is the name of the expense {i} ?'))
@@ -25,7 +21,7 @@ class Expense:
             sumExpense +=  expense.amount
         print(f'{Person.name} has an expenses {sumExpense} per month')
 
-    def displayIncome(self,ExpenseList):# Method to display the expenses
+    def displayExpense(self,ExpenseList):# Method to display the expenses
         print(f"These are the expenses for {Person.name}:")
         print()
 
