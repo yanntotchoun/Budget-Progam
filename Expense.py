@@ -1,4 +1,5 @@
 import Person
+person = Person()
 class Expense:
     def __init__(self,name=" ",amount=0):#Constructor for the Income Class
         self.name = name

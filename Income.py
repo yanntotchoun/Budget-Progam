@@ -1,5 +1,6 @@
 import Person
 
+person = Person()
 
 class Income:
     def __init__(self,name=" ",amount=0):#Constructor for the Income Class
@@ -24,7 +25,7 @@ class Income:
         print(sumIncome)
 
     def displayIncome(self,IncomeList):# Method to display the incomes
-        print(f"These are the source of income for {Person.name}:")
+        print(f"These are the source of income for {person.name}:")
         print()
 
         for income in IncomeList:

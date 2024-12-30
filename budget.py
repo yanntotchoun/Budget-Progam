@@ -18,7 +18,7 @@ IncomeList = []
 print("Hello, this is a program to calculate your monthly budget.")
 name = str(input('What is your name ?'))
 age = int(input('What is your age ?'))
-moneySaved = float(input('How much money do you have saved currently with decimals?'))
+moneySaved = float(input('How much money do you have saved currently ?'))
 
 
 
