@@ -1,5 +1,5 @@
 import Person
-person = Person()
+
 class Expense:
     def __init__(self,name=" ",amount=0):#Constructor for the Income Class
         self.name = name
@@ -17,13 +17,14 @@ class Expense:
             ExpenseList.append(ExpenseObject)
 
     def amountExpense(self,ExpenseList):#Method to add the amount of the expenses together to the sum of expenses
-        sumExpense =0
+        sumExpense = 0
         for expense in ExpenseList:
             sumExpense +=  expense.amount
-        print(f'{Person.name} has an expenses {sumExpense} per month')
 
-    def displayExpense(self,ExpenseList):# Method to display the expenses
-        print(f"These are the expenses for {Person.name}:")
+        return sumExpense
+
+    def displayExpense(self,ExpenseList,user):# Method to display the expenses
+        print(f"These are the expenses for {user.name}:")
         print()
 
         for income in ExpenseList:

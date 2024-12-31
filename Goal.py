@@ -2,10 +2,11 @@ import Person
 import Income
 
 class Goal:
-    def __init__(self,name="",amount=0.0,percentage=0.0):#Constructor
+    def __init__(self,name,amount,percentage):#Constructor
         self.name = name
         self.amount = amount
         self.percentage = percentage
+    
        
 
     def findGoal(self,goal,GoalList):#Find all of the financial goals for the user
@@ -33,15 +34,16 @@ class Goal:
     def setSpecificPercentageForList(self,GoalList):#Method that will set the percentage of the Goal objects inside of the list
 
         length =len(GoalList)
-        #i can a while here to make sure it's a 100 percent
+        #i can put a while here to make sure it's a 100 percent
 
         for i in range(length):
-            goalPercentage = int(input(f"Please input a percentage in int for {GoalList[i].name} "))
+            goalPercentage = int(input(f"Please input a number for percentage for {GoalList[i].name} "))
+            goalPercentage /= 100
             GoalList[i].percentage = goalPercentage
     
 
-    def displayGoal(self,GoalList):# Method to display the financial Goals
-        print(f"These are the financial goals for {Person.name}:")
+    def displayGoal(self,GoalList,user):# Method to display the financial Goals
+        print(f"These are the financial goals for {user.name}:")
         print()
 
         for goal in GoalList:
@@ -64,8 +66,8 @@ class Goal:
         print(f"To reach {goalFinalAmount} with a monthly income of {monthlyIncome} $, it would take you approximately {weeks} weeks, {r_months} months or {years} year(s)")
 
 
-    def printMoneyAllocation(GoalList,IncomeList): # Will print what where to put the money that we allocate
-        monthlyIncome = Income.amountIncome(IncomeList)
+    def printMoneyAllocation(self,GoalList,IncomeList,income): # Will print what where to put the money that we allocate
+        monthlyIncome = income.amountIncome(IncomeList)
         length = len(GoalList)
 
         for i in range(length):
