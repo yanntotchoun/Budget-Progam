@@ -7,11 +7,9 @@ class Expense:
     
 
     def findExpense(self,quantity,ExpenseList):#Method for finding all of the Expenses of a person
-   
-  
-
+        
         for i in range (quantity):#Getting the information of the Expense, then creating an object an putting it inside of a list
-            name = str(input(f'What is the name of the expense {i} ?'))
+            name = str(input('What is the name of the expense ?'))
             amount   = float(input(f'What is the amount of the expense named {name} ?'))
             ExpenseObject = Expense(name,amount)
             ExpenseList.append(ExpenseObject)

@@ -2,7 +2,7 @@ import Person
 import Income
 
 class Goal:
-    def __init__(self,name,amount,percentage):#Constructor
+    def __init__(self,name="",amount=0,percentage=0.0):#Constructor
         self.name = name
         self.amount = amount
         self.percentage = percentage
@@ -20,13 +20,21 @@ class Goal:
             GoalList.append(goal)
 
     def getSpecificGoalAmount(self,GoalList,goalSearch): #Find the amount of money for a specific goal(To be used with Money Allocation Class
+        position =-1
 
-        try:
-            position  = GoalList.index(goalSearch)
-        except ValueError:
-            print(f"There is no goal with the name of {goalSearch}")
+        for i, goal in enumerate(GoalList):
+            if goal.name == goalSearch:  
+                position = i
+                break
+            else:
+             print(f"{goalSearch} is not in one of your financial goals.")
 
-        goalTarget = GoalList[position].amount  
+
+        
+        if position <0:
+            goalTarget = GoalList[position].amount  
+        else:
+            goalTarget = -1
 
         return goalTarget
     
@@ -51,20 +59,20 @@ class Goal:
             print()
             
 
-    def timeTillGoal(self,goalSearch,GoalList,IncomeList):#Method that will find the time until we reach a specific goal
+    def timeTillGoal(self,goalSearch,GoalList,IncomeList,income):#Method that will find the time until we reach a specific goal
         
 
         goalFinalAmount = self.getSpecificGoalAmount(GoalList,goalSearch)
 
-        monthlyIncome = Income.amountIncome(IncomeList)
-
-        months = goalFinalAmount/monthlyIncome
-        r_months = round(months,1)
-        weeks = 4*r_months
-        years = r_months/12
-
-        print(f"To reach {goalFinalAmount} with a monthly income of {monthlyIncome} $, it would take you approximately {weeks} weeks, {r_months} months or {years} year(s)")
-
+        if goalFinalAmount > 0:
+            monthlyIncome = income.amountIncome(IncomeList)
+            months = goalFinalAmount/monthlyIncome
+            r_months = round(months,1)
+            weeks = 4*r_months
+            years = r_months/12
+            print(f"To reach {goalFinalAmount} for your {goalSearch} goal with a monthly income of {monthlyIncome} $, it would take you approximately {weeks} weeks, {r_months} months or {years} year(s)")
+        else:
+            print(f"{goalSearch} is not in one of your financial goals.")
 
     def printMoneyAllocation(self,GoalList,IncomeList,income): # Will print what where to put the money that we allocate
         monthlyIncome = income.amountIncome(IncomeList)
@@ -72,7 +80,7 @@ class Goal:
 
         for i in range(length):
 
-            print(f"For {GoalList[i].name}, you have allocated a percentage of {GoalList[i].percentage} so you should allocate {monthlyIncome}")
+            print(f"For {GoalList[i].name}, you have allocated a percentage of {GoalList[i].percentage} so you should allocate {round(monthlyIncome*GoalList[i].percentage,2)} of your {monthlyIncome}$ monthly Income")
             print()
 
 

@@ -40,7 +40,7 @@ expense.findExpense(quantity,ExpenseList)
 #Setting your Goal(s)
 print("Lastly you'll need to set your financial goals if you have any.")
 quantity = int(input("How many financial goals do you have ?"))
-goal = Goal.Goal(income,expense)
+goal = Goal.Goal()
 goal.findGoal(quantity,GoalList)
 ''''
 
@@ -75,12 +75,12 @@ while(operation != 6):
 
     elif operation == 4:
         goal.setSpecificPercentageForList(GoalList)
-        goal.printMoneyAllocation(GoalList,IncomeList)
+        goal.printMoneyAllocation(GoalList,IncomeList,income)
         operation = int(input("What other operation do you want to do today.\n1. See your monthly Income\n2. See your your monthly expenses\n3. See your financial goals\n4. Allocate your money\n5. See how the time until you reach a certain financial goal.\n6. Exit Program "))
 
     elif operation == 5:
         goalSearch = str(input("What goal do you want to get a timeframe of ?"))
-        goal.TimeTillGoal(goalSearch,GoalList,IncomeList)
+        goal.timeTillGoal(goalSearch,GoalList,IncomeList,income)
         operation = int(input("What other operation do you want to do today.\n1. See your monthly Income\n2. See your your monthly expenses\n3. See your financial goals\n4. Allocate your money\n5. See how the time until you reach a certain financial goal.\n6. Exit Program "))
 
     elif operation == 6:
