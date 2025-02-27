@@ -1,5 +1,5 @@
 import Person
-
+import json
 
 
 class Income:
@@ -7,15 +7,17 @@ class Income:
         self.name = name
         self.amount = amount
         
-        6
+       
 
     def findIncome(self,quantity,IncomeList):#Method for finding all of the Incomes source of a person
- 
+  
         for i in range (quantity):#Getting the information of the income, then creating an object an putting it inside of a list
             name = str(input('What is the name of the income ?'))
             amount   = float(input(f'What is the amount of the income named {name} ?'))
             IncomeObject = Income(name,amount)
             IncomeList.append(IncomeObject)
+            with open("income.json",'w') as file:
+                json.dump(IncomeList,file)
 
     def amountIncome(self,IncomeList):#Method to add the amount of the incomes together to the sum of incomes
         sumIncome =0

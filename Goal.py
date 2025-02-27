@@ -80,7 +80,7 @@ class Goal:
 
         for i in range(length):
 
-            print(f"For {GoalList[i].name}, you have allocated a percentage of {GoalList[i].percentage} so you should allocate {round(monthlyIncome*GoalList[i].percentage,2)} of your {monthlyIncome}$ monthly Income")
+            print(f"For {GoalList[i].name}, you have allocated a percentage of {GoalList[i].percentage} so you should allocate {round(monthlyIncome*GoalList[i].percentage,2)}$ of your {monthlyIncome}$ monthly Income")
             print()
 
 

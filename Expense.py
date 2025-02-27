@@ -6,7 +6,7 @@ class Expense:
         self.amount = amount
     
 
-    def findExpense(self,quantity,ExpenseList):#Method for finding all of the Expenses of a person
+    def findExpense(self,quantity,ExpenseList,answer):#Method for finding all of the Expenses of a person
         
         for i in range (quantity):#Getting the information of the Expense, then creating an object an putting it inside of a list
             name = str(input('What is the name of the expense ?'))
