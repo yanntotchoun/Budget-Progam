@@ -1,5 +1,6 @@
 import Person
 import Income
+import json
 
 class Goal:
     def __init__(self,name="",amount=0,percentage=0.0):#Constructor
@@ -17,13 +18,17 @@ class Goal:
             goalName = str(input('What is the name of this goal ?'))
             goalMoney = float(input(f'How much money do you want to save for this goal({goalName})?'))
             goal = Goal(goalName,goalMoney)
-            GoalList.append(goal)
+            goal_dict = {"name":goalName,"amount":goalMoney,"percentage":0}
+            GoalList.append(goal_dict)
+            with open("goal.json","w") as file:
+                json.dump(GoalList,file,indent=4)
+
 
     def getSpecificGoalAmount(self,GoalList,goalSearch): #Find the amount of money for a specific goal(To be used with Money Allocation Class
         position =-1
 
         for i, goal in enumerate(GoalList):
-            if goal.name == goalSearch:  
+            if goal["name"] == goalSearch:  
                 position = i
                 break
             else:
@@ -32,9 +37,9 @@ class Goal:
 
         
         if position <0:
-            goalTarget = GoalList[position].amount  
+             goalTarget = -1
         else:
-            goalTarget = -1
+            goalTarget = GoalList[position]["amount"]  
 
         return goalTarget
     
@@ -45,9 +50,9 @@ class Goal:
         #i can put a while here to make sure it's a 100 percent
 
         for i in range(length):
-            goalPercentage = int(input(f"Please input a number for percentage for {GoalList[i].name} "))
+            goalPercentage = int(input(f"Please input a number for percentage for {GoalList[i]["name"]}"))
             goalPercentage /= 100
-            GoalList[i].percentage = goalPercentage
+            GoalList[i]["percentage"] = goalPercentage
     
 
     def displayGoal(self,GoalList,user):# Method to display the financial Goals
@@ -55,8 +60,8 @@ class Goal:
         print()
 
         for goal in GoalList:
-            print(goal.name)
-            print()
+            print(goal["name"])
+            print(goal["amount"])
             
 
     def timeTillGoal(self,goalSearch,GoalList,IncomeList,income):#Method that will find the time until we reach a specific goal
@@ -80,7 +85,7 @@ class Goal:
 
         for i in range(length):
 
-            print(f"For {GoalList[i].name}, you have allocated a percentage of {GoalList[i].percentage} so you should allocate {round(monthlyIncome*GoalList[i].percentage,2)}$ of your {monthlyIncome}$ monthly Income")
+            print(f"For {GoalList[i]["name"]}, you have allocated a percentage of {GoalList[i]["percentage"]} so you should allocate {round(monthlyIncome*GoalList[i]["percentage"],2)}$ of your {monthlyIncome}$ monthly Income")
             print()
 
 

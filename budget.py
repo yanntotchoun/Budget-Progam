@@ -9,7 +9,7 @@ import json
 
 
 ''''
-Ne pas oublier de tester à chaque pour assurer que tous run sans problème
+Ne pas oublier de tester à chaque pour assurer que tous run sans problème. NE PAS OUBLIER DE METTRE LES QUANTITY ET ETC A LINTERIEUR DES FOR LOOPS
 
 '''
 
@@ -51,24 +51,41 @@ if answer=='y' or answer=='Y':
         income_object = [Income.from_dict(d)for d in data_list]
         #Instead of adding the entire list inside of the Income list with append , you use extend to add each objects individually
         IncomeList.extend(income_object)
-
-    
-
 else:
     with open("income.json","w") as file:
      income.findIncome(quantity,IncomeList)
+   
+
 
 #Setting the Expenses
 print("Then you need to set your Expenses.")
 quantity = int(input("How many expenses do you have ?"))
 expense = Expense.Expense()
-expense.findExpense(quantity,ExpenseList)
+
+if answer=='y' or answer=='Y':
+    with open("expense.json","r") as file:
+        data_list = json.load(file)
+        expense_object = [Expense.from_dict(d)for d in data_list]
+        ExpenseList.extend(expense_object)
+else:
+   with open("expense.json","w") as file:
+    expense.findExpense(quantity,ExpenseList)
+    
+
 
 #Setting your Goal(s)
 print("Lastly you'll need to set your financial goals if you have any.")
 quantity = int(input("How many financial goals do you have ?"))
 goal = Goal.Goal()
 goal.findGoal(quantity,GoalList)
+if answer=='y' or answer=='Y':
+    with open("goal.json","r") as file:
+        data_list = json.load(file)
+        goal_object = [Goal.from_dict(d)for d in data_list]
+        GoalList.extend(GoalList)
+else:
+    with open("goal.json","w") as file:
+        goal.findGoal(goal,GoalList)
 
 
 
