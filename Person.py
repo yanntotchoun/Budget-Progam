@@ -26,5 +26,12 @@ class Person:
         
         with open("person.json","w") as file:
             json.dump(person,file, indent=4)
+    
+    def setUserData(self,n,a,mS):
+            self.name = n
+            self.age = a
+            self.moneySaved = mS
+
+        
 
     
