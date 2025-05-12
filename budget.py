@@ -42,16 +42,16 @@ else:
 
 #Setting the Income
 print("First you need to set your Income(s).")
-quantity = int(input('How many incomes do you currently have'))
 income = Income.Income()
 
 if answer=='y' or answer=='Y':
     with open("income.json","r") as file:
         data_list = json.load(file)
-        income_object = [Income.from_dict(d)for d in data_list]
+        income_object = [Income.from_dict(Income.Income,d)for d in data_list]
         #Instead of adding the entire list inside of the Income list with append , you use extend to add each objects individually
         IncomeList.extend(income_object)
 else:
+    quantity = int(input('How many incomes do you currently have'))
     with open("income.json","w") as file:
      income.findIncome(quantity,IncomeList)
    
@@ -59,15 +59,15 @@ else:
 
 #Setting the Expenses
 print("Then you need to set your Expenses.")
-quantity = int(input("How many expenses do you have ?"))
 expense = Expense.Expense()
 
 if answer=='y' or answer=='Y':
     with open("expense.json","r") as file:
         data_list = json.load(file)
-        expense_object = [Expense.from_dict(d)for d in data_list]
+        expense_object = [Expense.from_dict(Expense.Expense,d)for d in data_list]
         ExpenseList.extend(expense_object)
 else:
+   quantity = int(input("How many expenses do you have ?"))
    with open("expense.json","w") as file:
     expense.findExpense(quantity,ExpenseList)
     
@@ -75,17 +75,16 @@ else:
 
 #Setting your Goal(s)
 print("Lastly you'll need to set your financial goals if you have any.")
-quantity = int(input("How many financial goals do you have ?"))
 goal = Goal.Goal()
-goal.findGoal(quantity,GoalList)
 if answer=='y' or answer=='Y':
     with open("goal.json","r") as file:
         data_list = json.load(file)
-        goal_object = [Goal.from_dict(d)for d in data_list]
+        goal_object = [Goal.from_dict(Goal.Goal,d)for d in data_list]
         GoalList.extend(GoalList)
 else:
+    quantity = int(input("How many financial goals do you have ?"))
     with open("goal.json","w") as file:
-        goal.findGoal(goal,GoalList)
+        goal.findGoal(quantity,GoalList)
 
 
 
@@ -114,7 +113,8 @@ while(operation != 6):
         operation = int(input("What other operation do you want to do today.\n1. See your monthly Income\n2. See your your monthly expenses\n3. See your financial goals\n4. Allocate your money\n5. See how the time until you reach a certain financial goal.\n6. Exit Program "))
 
     elif operation == 4:
-        goal.setSpecificPercentageForList(GoalList)
+        goalSearch =0
+        goal.setSpecificPercentageForList(GoalList,goalSearch)
         goal.printMoneyAllocation(GoalList,IncomeList,income)
         operation = int(input("What other operation do you want to do today.\n1. See your monthly Income\n2. See your your monthly expenses\n3. See your financial goals\n4. Allocate your money\n5. See how the time until you reach a certain financial goal.\n6. Exit Program "))
 

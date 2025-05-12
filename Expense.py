@@ -20,7 +20,7 @@ class Expense:
     def amountExpense(self,ExpenseList):#Method to add the amount of the expenses together to the sum of expenses
         sumExpense = 0
         for expense in ExpenseList:
-            sumExpense += expense["amount"]
+            sumExpense += expense.amount
 
         return sumExpense
 
@@ -29,9 +29,11 @@ class Expense:
         print()
 
         for expense in ExpenseList:
-            print(expense["amount"])
-            print(expense["amount"])
-
+            print(expense.name)
+            print(expense.amount)
+#This from_dict method takes a dictionary like {"name": "Job", "amount": 2000} and creates an Income object from it.
+def from_dict(cls, data):
+        return cls(data['name'], data['amount'])
 
 
     

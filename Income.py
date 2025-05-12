@@ -35,15 +35,18 @@ class Income:
         sumIncome =0
         for income in IncomeList:
             #since it is a dictionary, I have to use a different way such as income["name"]. In this situation, income is the name of the object inside of the IncomeList list
-            sumIncome += income["amount"]
+            sumIncome += income.amount
         return sumIncome
 
     def displayIncome(self,IncomeList,user):# Method to display the incomes
         
         print(f"These are the source of income for {user.name}:")
         print()
+
         for income in IncomeList:
-            print(income["name"])
-            print(income["amount"])
+            print(income.name)
+            print(income.amount)
 
-
+#This from_dict method takes a dictionary like {"name": "Job", "amount": 2000} and creates an Income object from it.
+def from_dict(cls, data):
+        return cls(data['name'], data['amount'])

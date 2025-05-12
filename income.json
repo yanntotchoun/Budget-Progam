@@ -1,14 +1,10 @@
 [
     {
-        "name": "Cineplex",
-        "amount": 500.0
+        "name": "Cineplex ",
+        "amount": 200.0
     },
     {
         "name": "Crypto",
-        "amount": 40000.0
-    },
-    {
-        "name": "Hedge Fund Invesment",
-        "amount": 1000.0
+        "amount": 160.0
     }
 ]
